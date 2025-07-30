@@ -2,19 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><%= username %>'s Profile</title>
+    <title><%= user.name %>'s Profile</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .post { margin: 20px auto; max-width: 400px; border: 1px solid #ccc; padding: 10px; }
+        img { width: 100%; height: auto; }
+    </style>
 </head>
 <body>
-    <h2>This page belongs to <%= username %></h2>
-    <button>Follow</button>
-    <button>Message</button>
+    <h1>Welcome to <%= user.name %>'s Insta Page</h1>
+    <p><strong>Followers:</strong> <%= user.followers %> | <strong>Following:</strong> <%= user.following %></p>
 
-    <h3>Followers:</h3>
-    <ol>
-        <% followers.forEach(follower => { %>
-            <li><%= follower %></li>
-        <% }); %>
-    </ol>
+    <h2>Posts</h2>
+    <% user.posts.forEach(post => { %>
+        <div class="post">
+            <img src="<%= post.image %>" alt="Post image">
+            <p>❤️ Likes: <%= post.likes %></p>
+            <p>💬 Comments: <%= post.comments %></p>
+        </div>
+    <% }) %>
 </body>
 </html>
+
 

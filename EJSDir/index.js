@@ -1,51 +1,34 @@
 const express = require("express");
 const path = require("path");
+const data = require("./data.json"); // Load data.json
 
 const app = express();
 const port = 8080;
 
-// Set EJS as the templating engine
+// Set EJS as the view engine and define views folder
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
-// Set the views directory
-app.set("views", path.join(__dirname, "/views"));
-
-// Serve static files from the 'public' directory
+// Static files (optional, only needed if you use /public)
 app.use(express.static(path.join(__dirname, "public")));
 
 // Home route
 app.get("/", (req, res) => {
-    res.render("home"); // Renders views/home.ejs
+    res.render("home");
 });
 
-// Simple hello route
-app.get("/hello", (req, res) => {
-    res.send("Hello");
-});
-
-// Dynamic user profile route
+// Dynamic route for usernames like /cats or /dogs
 app.get("/:username", (req, res) => {
     const { username } = req.params;
+    const userData = data[username];
 
-    // Sample followers array
-    const followers = ["john_doe", "jane_smith", "elon_musk"];
-
-    // Render profile.ejs and pass data
-    res.render("profile", { username, followers });
+    if (userData) {
+        res.render("instagram", { user: userData }); // ✅ FIX: use "instagram" not "profile"
+    } else {
+        res.status(404).send("User not found");
+    }
 });
 
-// 404 Handler - for undefined routes
-app.use((req, res) => {
-    res.status(404).send("404 - Page Not Found");
-});
-
-// Error handler - to catch unexpected issues
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send("Something went wrong!");
-});
-
-// Start the server
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
