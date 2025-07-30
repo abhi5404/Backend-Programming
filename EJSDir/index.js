@@ -4,34 +4,48 @@ const path = require("path");
 const app = express();
 const port = 8080;
 
+// Set EJS as the templating engine
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "/views"));  // Ensure views directory is set
 
-// Middleware to serve static files
+// Set the views directory
+app.set("views", path.join(__dirname, "/views"));
+
+// Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, "public")));
 
+// Home route
 app.get("/", (req, res) => {
-    res.render("home");  // No need for .ejs
+    res.render("home"); // Renders views/home.ejs
 });
+
+// Simple hello route
 app.get("/hello", (req, res) => {
-    res.send("hello");  // No need for .ejs
+    res.send("Hello");
 });
 
-app.get("/ig/:username", (req, res) => {
-    let { username } = req.params;
-    res.render("instagram", { username }); // Removed .ejs from render call
+// Dynamic user profile route
+app.get("/:username", (req, res) => {
+    const { username } = req.params;
+
+    // Sample followers array
+    const followers = ["john_doe", "jane_smith", "elon_musk"];
+
+    // Render profile.ejs and pass data
+    res.render("profile", { username, followers });
 });
 
-// Handle missing templates gracefully
+// 404 Handler - for undefined routes
+app.use((req, res) => {
+    res.status(404).send("404 - Page Not Found");
+});
+
+// Error handler - to catch unexpected issues
 app.use((err, req, res, next) => {
-    if (err) {
-        console.error(err.message);
-        res.status(500).send("Internal Server Error");
-    } else {
-        next();
-    }
+    console.error(err.stack);
+    res.status(500).send("Something went wrong!");
 });
 
+// Start the server
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });

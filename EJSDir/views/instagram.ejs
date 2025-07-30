@@ -2,12 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram</title>
+    <title><%= username %>'s Profile</title>
 </head>
 <body>
     <h2>This page belongs to <%= username %></h2>
     <button>Follow</button>
     <button>Message</button>
+
+    <h3>Followers:</h3>
+    <ol>
+        <% followers.forEach(follower => { %>
+            <li><%= follower %></li>
+        <% }); %>
+    </ol>
 </body>
 </html>
+
