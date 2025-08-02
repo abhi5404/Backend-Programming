@@ -7,10 +7,10 @@
 </head>
 <body>
     <h2>Edit your post</h2>
-    <p>Post id:</p>
-    <p>post username:</p>
+    <p>Post id:<%= post.id %> </p>
+    <p>post username:<%= post.username %></p>
     <form>
-        <textarea placeholder="Write Your Post" name="content" required></textarea><br>
+        <textarea ><%= post.content %></textarea><br>
         <button type="submit">Update</button>
     </form>
 </body>
