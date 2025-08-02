@@ -1,3 +1,4 @@
+const { log } = require('console');
 const express = require('express');
 const app = express();
 const port = 8080;
@@ -28,7 +29,14 @@ app.get('/posts', (req, res) => {
   res.render("index.ejs", { posts: posts });
 }
 );
-
+app.get('/posts/new', (req, res) => {
+    res.render("new.ejs");
+});
+app.post('/posts', (req, res) => {
+  let{ username, content } = req.body;
+    posts.push({ username, content });
+   res.send("Form submitted successfully");
+});
 app.listen(port, () => {
     console.log(`listening on port :${port}`);
 });
