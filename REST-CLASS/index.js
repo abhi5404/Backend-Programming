@@ -62,8 +62,11 @@ app.patch('/posts/:id', (req, res) => {
     console.log(post);
     res.send("This is a patch request");
 });
-
-
+app.get('/posts/:id/edit', (req, res) => {
+    let { id } = req.params;
+    let post = posts.find(p => p.id === id);
+    res.render("edit.ejs", { post: post });
+});
 
 app.listen(port, () => {
     console.log(`listening on port :${port}`);
