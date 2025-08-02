@@ -42,13 +42,9 @@ app.post('/posts', (req, res) => {
 });
 
 app.get('/posts/:id', (req, res) => {
-    let postId = req.params.id;
-    let post = posts.find(p => p.id === postId);
-    if (post) {
-        res.render("show.ejs", { post: post });
-    } else {
-        res.status(404).send("Post not found");
-    }
+    let {id} = req.params;
+    let post = posts.find(p => p.id === id);
+  res.render("show.ejs", { post: post });
 });
 
 
