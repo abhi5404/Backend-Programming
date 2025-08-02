@@ -13,7 +13,11 @@
         <h3 class="user">@<%=post.username %></h3>
         <h4 class="content"><%= post.content %></h4>
         <a href="http://localhost:8080/posts/<%= post.id %>">View Details</a>
-   <a href="http://localhost:8080/posts/<%= post.id %>/edit">Edit</a>
+        <a href="http://localhost:8080/posts/<%= post.id %>/edit">Edit</a>
+        <form method="POST" action="/posts/<%= post.id %>" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this post?')">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit">Delete</button>
+        </form>
      </div>
     <% } %>
 <br/>
