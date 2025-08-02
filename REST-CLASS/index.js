@@ -24,8 +24,8 @@ let posts = [
     }
 ];
 
-app.get('/', (req, res) => {
-    res.send("serving working well");
+app.get('/posts', (req, res) => {
+  res.render("index.ejs", { posts: posts });
 }
 );
 
