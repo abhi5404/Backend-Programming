@@ -8,23 +8,19 @@
 </head>
 <body>
     <h1>Quora Posts</h1>
-    <% for(post of posts) { %>
-     <div class="post">
-        <h3 class="user">@<%=post.username %></h3>
-        <h4 class="content"><%= post.content %></h4>
-        <a href="http://localhost:8080/posts/<%= post.id %>">View Details</a>
-        <a href="http://localhost:8080/posts/<%= post.id %>/edit">Edit</a>
-        <form method="POST" action="/posts/<%= post.id %>" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this post?')">
+    <% for(let post of posts) { %>
+    <div class="post-card">
+        <h3>@<%= post.username %></h3>
+        <p><%= post.content %></p>
+        <a href="/posts/<%= post.id %>">View Details</a>
+        <a href="/posts/<%= post.id %>/edit">Edit</a>
+        <form method="POST" action="/posts/<%= post.id %>" onsubmit="return confirm('Are you sure you want to delete this post?')" style="display:inline;">
             <input type="hidden" name="_method" value="DELETE">
             <button type="submit">Delete</button>
         </form>
-     </div>
+    </div>
     <% } %>
-<br/>
-<br/>
-    <a href="http://localhost:8080/posts/new">Create New Post</a>
-    <br/>
-    <br/>
-  
+    <a href="/posts/new" class="create-btn">Create New Post</a>
 </body>
 </html>
+
