@@ -1,68 +1,138 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f5f5f5;
-    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f2f3;
+    color: #282829;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
     text-align: center;
+    padding: 20px;
+    font-size: 2rem;
+    background-color: #b92b27; /* Quora Maroon */
+    color: white;
     margin-bottom: 30px;
 }
 
 .post-card {
-    background-color: #fff;
+    background-color: #ffffff;
+    max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
-    margin-bottom: 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .post-card h3 {
     margin-top: 0;
-    color: #0077cc;
+    font-size: 1rem;
+    color: #b92b27; /* Maroon username */
 }
 
-.post-card a {
-    margin-right: 10px;
+.post-card p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* Link Buttons */
+a.view-btn {
+    display: inline-block;
+    background-color: #3498db; /* Blue */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
     text-decoration: none;
-    color: #0077cc;
+    margin-right: 10px;
+    font-size: 0.9rem;
 }
 
-.post-card form {
-    display: inline;
+a.view-btn:hover {
+    background-color: #2e80c9;
+}
+
+a.edit-btn {
+    display: inline-block;
+    background-color: #27ae60; /* Green */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+a.edit-btn:hover {
+    background-color: #219150;
+}
+
+/* Delete Button */
+button.delete-btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border: none;
+    background-color: #b92b27; /* Maroon */
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.delete-btn:hover {
+    background-color: #a02020;
 }
 
 textarea, input[type="text"] {
     width: 100%;
-    padding: 8px;
-    margin: 10px 0;
-    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #ffffff;
 }
 
-button {
-    padding: 8px 15px;
-    border: none;
-    background-color: #0077cc;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #005fa3;
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .create-btn {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #28a745;
+    display: block;
+    width: fit-content;
+    margin: 30px auto;
+    padding: 10px 20px;
+    background-color: #b92b27; /* Maroon */
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 6px;
+    font-size: 1rem;
 }
 
 .create-btn:hover {
-    background-color: #218838;
+    background-color: #a02020;
 }
+
+a.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #b92b27;
+    text-decoration: none;
+}
+
+a.back-link:hover {
+    text-decoration: underline;
+}
+
+
