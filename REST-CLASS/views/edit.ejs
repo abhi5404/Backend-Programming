@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Post</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h2>Edit your post</h2>
-    <p>Post id:<%= post.id %> </p>
-    <p>post username:<%= post.username %></p>
+    <h1>Edit Your Post</h1>
+    <p>Post ID: <%= post.id %></p>
+    <p>Username: @<%= post.username %></p>
     <form method="POST" action="/posts/<%= post.id %>">
         <input type="hidden" name="_method" value="PATCH">
-        <textarea rows="10" cols="35" name="content"><%= post.content %></textarea><br>
+        <textarea name="content" rows="10" cols="40"><%= post.content %></textarea><br>
         <button type="submit">Update</button>
     </form>
 </body>

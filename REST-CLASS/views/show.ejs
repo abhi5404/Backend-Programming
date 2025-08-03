@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post in Details</title>
+    <title>Post Details</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h2>Here is your post in detail</h2>
-    <p>Post id: <%= post.id %></p>
-    <div class="post">
-        <h3 class="user">@<%= post.username %></h3>
-        <p class="content"><%= post.content %></p>
+    <h1>Post Details</h1>
+    <div class="post-card">
+        <h3>@<%= post.username %></h3>
+        <p><%= post.content %></p>
+    </div>
+    <a href="/posts">← Back to All Posts</a>
 </body>
 </html>
