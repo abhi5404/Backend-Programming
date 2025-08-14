@@ -17,3 +17,32 @@
     </form>
 </body>
 </html>
+// This code is for the edit page of a post in a web application. It allows users to modify the content of their posts. The form submits a PATCH request to update the post with the specified ID. The username is displayed for reference, and the current content of the post is pre-filled in a textarea for editing.
+    <a href="/posts" class="back-btn">Back to All Posts</a>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Posts</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Quora Posts</h1>
+    <% for(let post of posts) { %>
+    <div class="post-card">
+        <h3>@<%= post.username %></h3>
+        <p><%= post.content %></p>
+        <a href="/posts/<%= post.id %>">View Details</a>
+        <a href="/posts/<%= post.id %>/edit">Edit</a>
+        <form method="POST" action="/posts/<%= post.id %>" onsubmit="return confirm('Are you sure you want to delete this post?')" style="display:inline;">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit">Delete</button>
+        </form>
+    </div>  
+    <% } %>
+    <a href="/posts/new" class="create-btn">Create New Post</a>
+</body>
+</html>
