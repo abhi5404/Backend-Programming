@@ -1,5 +1,11 @@
 const {faker} = require ('@faker-js/faker');
 const mySQL = require('mysql2');
+const connection = mySQL.createConnection({
+    host: 'localhost',
+    user: 'root',
+    database: 'test',
+});
+
 let createRandomUser = () => {
 return {
     userId: faker.string.uuid(),
