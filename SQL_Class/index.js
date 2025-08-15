@@ -1,5 +1,5 @@
 const {faker} = require ('@faker-js/faker');
-
+const mySQL = require('mysql2');
 let createRandomUser = () => {
 return {
     userId: faker.string.uuid(),
