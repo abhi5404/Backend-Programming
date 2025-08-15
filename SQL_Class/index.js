@@ -1,4 +1,5 @@
 const {faker} = require ('@faker-js/faker');
+
 let createRandomUser = () => {
 return {
     userId: faker.string.uuid(),
@@ -11,4 +12,4 @@ return {
 };
 console.log(createRandomUser());
 
- 
+  
