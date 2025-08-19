@@ -7,16 +7,14 @@ const {faker} = require ('@faker-js/faker');
 //     password: 'Abhijit@2004' 
 // });
 
-let createRandomUser = () => {
+let getRandomUser = () => {
 return {
-    userId: faker.string.uuid(),
+    id: faker.string.uuid(),
     userName: faker.internet.userName(),
     email: faker.internet.email(),
     password: faker.internet.password(),
-    birthdate: faker.date.birthdate({min: 18, max: 65, mode: 'age'}),
-    registeredAt: faker.date.past(),
 };
 };
-console.log(createRandomUser());
+console.log(getRandomUser());
 
   
