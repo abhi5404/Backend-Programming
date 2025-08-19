@@ -16,6 +16,7 @@ try {
     console.error("Error connecting to the database:", error);
 }
 
+connection.end();
 
 let getRandomUser = () => {
 return {
@@ -25,6 +26,6 @@ return {
     password: faker.internet.password(),
 };
 };
-console.log(getRandomUser());
+// console.log(getRandomUser());
 
   
