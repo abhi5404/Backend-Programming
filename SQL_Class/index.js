@@ -7,10 +7,15 @@ const connection = mySQL.createConnection({
     password: 'Abhijit@2004' 
 });
 
+let q= "SHOW TABLES";
+
 try {
     connection.query("SHOW TABLES", (err, results) => {
         if (err) throw err;
         console.log(results);
+        console.log(results.length);
+        console.log(results[0]);
+        console.log(results[1]['Tables_in_delta_app']);
     });
 } catch (error) {
     console.error("Error connecting to the database:", error);
