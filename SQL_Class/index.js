@@ -7,6 +7,16 @@ const connection = mySQL.createConnection({
     password: 'Abhijit@2004' 
 });
 
+try {
+    connection.query("SHOW TABLES", (err, results) => {
+        if (err) throw err;
+        console.log(results);
+    });
+} catch (error) {
+    console.error("Error connecting to the database:", error);
+}
+
+
 let getRandomUser = () => {
 return {
     id: faker.string.uuid(),
