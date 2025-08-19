@@ -3,7 +3,7 @@ const mySQL = require('mysql2');
 const connection = mySQL.createConnection({
     host: 'localhost',
     user: 'root',
-    database: 'test',
+    database: 'delta_app',
     password: 'Abhijit@2004' 
 });
 
