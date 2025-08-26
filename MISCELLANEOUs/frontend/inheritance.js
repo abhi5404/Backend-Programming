@@ -33,3 +33,17 @@ class Teacher extends Person {
         console.log(`${this.name} is teaching ${this.subject}.`);
     }
 }
+
+// Example usage:
+let student = new Student("Alice", 20, "S12345");
+student.talk();
+student.study();
+let teacher = new Teacher("Mr. Smith", 40, "Mathematics");
+teacher.talk();
+teacher.teach();
+
+
+// Output:
+// Name: Alice, Age: 20
+// Student ID: S12345
+// Hello, my name is Alice and I am 20 years old.
