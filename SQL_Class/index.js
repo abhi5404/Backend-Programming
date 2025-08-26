@@ -10,7 +10,7 @@ const connection = mySQL.createConnection({
 let q= "SHOW TABLES";
 
 try {
-    connection.query("SHOW TABLES", (err, results) => {
+    connection.query(q, (err, results) => {
         if (err) throw err;
         console.log(results);
         console.log(results.length);
