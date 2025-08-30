@@ -43,7 +43,3 @@ teacher.talk();
 teacher.teach();
 
 
-// Output:
-// Name: Alice, Age: 20
-// Student ID: S12345
-// Hello, my name is Alice and I am 20 years old.
