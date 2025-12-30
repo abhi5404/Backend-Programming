@@ -7,11 +7,24 @@ app.listen(port, () => {
     console.log(`App is listening on port ${port}`);
 });
 
-// Middleware to log every request
+// Custom Middleware 
 app.use((req, res, next) => {
     console.log("Request received");
     next(); // Important to proceed to next middleware or route handler
 });
+
+// Built-in Middleware using morgan
+const morgan = require('morgan');
+app.use(morgan('tiny'));
+
+// middleware in specific routes
+app.get("/special", (req, res, next) => {
+    console.log("Special request");
+    next();
+}, (req, res) => {
+    res.send("You reached the special route");
+});
+
 
 // Routes
 app.get("/", (req, res) => {
