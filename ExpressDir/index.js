@@ -26,6 +26,11 @@ app.get("/help", (req, res) => {
     res.send("You contacted help path");
 });
 
+//require catme
+app.get("/cat", (req, res) => {
+    var catMe = require('cat-me');
+    res.send(catMe());
+});
 
 
 // app.post("/", (req, res) => {
