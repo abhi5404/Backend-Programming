@@ -1,0 +1,20 @@
+{
+  "name": "backend-programming",
+  "version": "1.0.0",
+  "description": "A powerful and scalable backend project built using **Node.js** and **Express.js** with support for **SQL (MySQL/PostgreSQL)** and **MongoDB (NoSQL)** databases.  \r This project serves as a boilerplate for creating RESTful APIs with authentication, database integration, and modular architecture.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhi5404/Backend-Programming.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhi5404/Backend-Programming/issues"
+  },
+  "homepage": "https://github.com/abhi5404/Backend-Programming#readme"
+}
