@@ -1,5 +1,10 @@
 const express = require('express');
+const path = require('path');
 const app = express();
+
+// Set up EJS as the view engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 let port = 3000;
 
@@ -7,23 +12,23 @@ app.listen(port, () => {
     console.log(`App is listening on port ${port}`);
 });
 
-// Custom Middleware 
-app.use((req, res, next) => {
-    console.log("Request received");
-    next(); // Important to proceed to next middleware or route handler
-});
+// // Custom Middleware 
+// app.use((req, res, next) => {
+//     console.log("Request received");
+//     next(); // Important to proceed to next middleware or route handler
+// });
 
-// Built-in Middleware using morgan
-const morgan = require('morgan');
-app.use(morgan('tiny'));
+// // Built-in Middleware using morgan
+// const morgan = require('morgan');
+// app.use(morgan('tiny'));
 
-// middleware in specific routes
-app.get("/special", (req, res, next) => {
-    console.log("Special request");
-    next();
-}, (req, res) => {
-    res.send("You reached the special route");
-});
+// // middleware in specific routes
+// app.get("/special", (req, res, next) => {
+//     console.log("Special request");
+//     next();
+// }, (req, res) => {
+//     res.send("You reached the special route");
+// });
 
 
 // Routes
@@ -59,3 +64,11 @@ app.get("/cat", (req, res) => {
 //     let { q } = req.query;
 //     res.send(<h1>`You searched for: ${q}`</h1>);
 // });
+
+
+// require ejs form run in localhost:3000
+ app.get("/ejs", (req, res) => {
+     res.render("form");
+ });
+
+
