@@ -7,11 +7,11 @@ app.listen(port, () => {
     console.log(`App is listening on port ${port}`);
 });
 
-// // Middleware to log every request
-// app.use((req, res, next) => {
-//     console.log("Request received");
-//     next(); // Important to proceed to next middleware or route handler
-// });
+// Middleware to log every request
+app.use((req, res, next) => {
+    console.log("Request received");
+    next(); // Important to proceed to next middleware or route handler
+});
 
 // Routes
 app.get("/", (req, res) => {
