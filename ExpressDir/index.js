@@ -13,29 +13,31 @@ app.listen(port, () => {
 //     next(); // Important to proceed to next middleware or route handler
 // });
 
-// // Routes
-// app.get("/", (req, res) => {
-//     res.send("You contacted root path");
-// });
+// Routes
+app.get("/", (req, res) => {
+    res.send("You contacted root path");
+});
 
-// app.get("/search", (req, res) => {
-//     res.send("i am good boy");
-// });
+app.get("/search", (req, res) => {
+    res.send("i am good boy");
+});
 
-// app.get("/help", (req, res) => {
-//     res.send("You contacted help path");
-// });
+app.get("/help", (req, res) => {
+    res.send("You contacted help path");
+});
+
+
 
 // app.post("/", (req, res) => {
 //     res.send("You sent a POST request");
 // });
 
-app.get("/:username/:id", (req, res) => {
-    let { username, id } = req.params;
-    res.send(`Welcome to the page of @${username} with ID ${id}`);
-});
+// app.get("/:username/:id", (req, res) => {
+//     let { username, id } = req.params;
+//     res.send(`Welcome to the page of @${username} with ID ${id}`);
+// });
 
-app.get("/search", (req, res) => {
-    let { q } = req.query;
-    res.send(<h1>`You searched for: ${q}`</h1>);
-});
+// app.get("/search", (req, res) => {
+//     let { q } = req.query;
+//     res.send(<h1>`You searched for: ${q}`</h1>);
+// });
