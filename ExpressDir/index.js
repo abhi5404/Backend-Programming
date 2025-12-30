@@ -6,10 +6,27 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-let port = 3000;
+// Body parsing middleware for form submissions
+app.use(express.urlencoded({ extended: true }));
 
-app.listen(port, () => {
+// Simple request logger to help debugging duplicate requests
+app.use((req, res, next) => {
+    console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+    next();
+});
+
+const port = process.env.PORT || 3000; 
+
+const server = app.listen(port, () => {
     console.log(`App is listening on port ${port}`);
+});
+
+server.on('error', (err) => {
+    if (err && err.code === 'EADDRINUSE') {
+        console.error(`Port ${port} is already in use. Kill the other process or set PORT to a different value.`);
+        process.exit(1);
+    }
+    throw err;
 });
 
 // // Custom Middleware 
@@ -67,8 +84,16 @@ app.get("/cat", (req, res) => {
 
 
 // require ejs form run in localhost:3000
- app.get("/ejs", (req, res) => {
-     res.render("form");
- });
+app.get('/ejs', (req, res) => {
+    res.render('form');
+    console.log(req.query);
+});
+
+app.post('/submit', (req, res) => {
+    console.log('Form body:', req.body);
+ res.send('Form received');
+});
+
+
 
 
