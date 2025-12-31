@@ -10,51 +10,53 @@ app.use(express.urlencoded({ extended: true }));
 // view engine
 app.set('view engine', 'ejs');
 
-// db connect
+// db connection
 dbConnection();
 
-// routes
-app.get('/', (req, res) => {
-  res.render('register');
-});
+// ---------- ROUTES ----------
 
+// CREATE (Register)
 app.post('/register', async (req, res) => {
-  const name = req.body.name;
-  const age = req.body.age;
-  const email = req.body.email;
-  const password = req.body.password;
-
-  console.log(req.body); // 🔴 VERY IMPORTANT (debug)
+  const { name, age, email, password } = req.body;
 
   await User.create({
-    name: name,
-    age: age,
-    email: email,
-    password: password
+    name,
+    age,
+    email,
+    password
   });
 
-  res.send('User registered');
+  res.send('User created');
 });
 
+// READ (Get all users)
 app.get('/users', async (req, res) => {
   const users = await User.find();
   res.send(users);
 });
 
-app.get('/update',(req,res)=>{
-  userModel.findupdateOne({name:"John"},{age:25},(err)=>{
-    if(!err){
-      res.send("updated successfully");
-} else{
-      res.send(err);
-    }
-  });
+// UPDATE (Update age by name)
+app.get('/update', async (req, res) => {
+  await User.updateOne(
+    { name: "John" },      // condition
+    { age: 25 }            // update
+  );
+
+  res.send('User updated');
+});
+
+// DELETE (Delete by name)
+app.get('/delete', async (req, res) => {
+  await User.deleteOne({ name: "John" });
+
+  res.send('User deleted');
 });
 
 // server
 app.listen(3000, () => {
   console.log('Server started on port 3000');
 });
+
 
 
 
