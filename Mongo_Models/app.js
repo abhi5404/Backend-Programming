@@ -41,6 +41,16 @@ app.get('/users', async (req, res) => {
   res.send(users);
 });
 
+app.get('/update',(req,res)=>{
+  userModel.findupdateOne({name:"John"},{age:25},(err)=>{
+    if(!err){
+      res.send("updated successfully");
+} else{
+      res.send(err);
+    }
+  });
+});
+
 // server
 app.listen(3000, () => {
   console.log('Server started on port 3000');
